@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-// const authInitialState = { isAuthenticated: false };
 const toggleCartInitialState = { cartIsShown: false, showNotification: false };
 
 const toggleCartSlice = createSlice({
@@ -11,7 +10,6 @@ const toggleCartSlice = createSlice({
       state.cartIsShown = !state.cartIsShown;
     },
     setShowNotify(state, action) {
-      // "=":state.showNotification = {} instead of  state.showNotification({})
       state.showNotification = {
         status: action.payload.status,
         title: action.payload.title,

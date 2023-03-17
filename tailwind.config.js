@@ -46,11 +46,15 @@ module.exports = {
       colors: {
         //brown
         headingColor: "#502314",
+        //shallow broen
+        secondHeadingColor: "#c7beb3",
         //red
         textColor: "#d62300",
         cartNumBg: "#e80013",
         //shallow background
         primary: "#f5ebdc",
+        //green
+        successMsg: "#1a8639",
         cardOverlay: "rgba(256,256,256,0.4)",
         lighttextGray: "#9ca0ab",
         card: "rgba(256,256,256,0.8)",

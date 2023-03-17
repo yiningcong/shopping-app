@@ -5,10 +5,7 @@ import { useSelector } from "react-redux";
 import React from "react";
 
 const Cart = (props) => {
-  // item={{ title: 'Test Item', quantity: 3, total: 18, price: 6 }}
-
   const cartItems = useSelector((state) => state.cart.items);
-  // const totalPrice = useSelector((state) => state.cart.totalQuantity);
 
   return (
     <Card className={classes.cart}>
@@ -16,7 +13,6 @@ const Cart = (props) => {
       <ul>
         {cartItems.map((item) => (
           <CartItem
-            //we need key outside of item
             key={item.id}
             item={{
               id: item.id,
@@ -26,15 +22,6 @@ const Cart = (props) => {
               price: item.price,
             }}
           />
-          // <CartItem
-          //   key={item.id}
-          //   title={item.name}
-          //   quantity={item.quantity}
-          //   total={totalPrice}
-          //   price={item.price}
-          //   onAdd={addItemHandler}
-          //   onRemove={removeItemHandler}
-          // />
         ))}
       </ul>
     </Card>

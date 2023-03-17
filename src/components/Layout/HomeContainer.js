@@ -99,7 +99,7 @@ const HomeContainer = () => {
             heroData.map((n) => (
               <div
                 key={n.id}
-                className="flex flex-col items-start space-y-3 sm:col-span-6 xl:col-span-3"
+                className="flex flex-col items-start col-span-12 space-y-3 sm:col-span-6 xl:col-span-4"
               >
                 <img
                   src={n.imageSrc}
