@@ -1,37 +1,32 @@
 export const categories = [
   {
     id: 1,
-    name: "Chicken",
-    urlParamName: "chicken",
+    name: "Durum",
+    urlParamName: "durum",
   },
   {
     id: 2,
-    name: "Curry",
-    urlParamName: "curry",
+    name: "Pizza",
+    urlParamName: "pizza",
   },
   {
     id: 3,
-    name: "Rice",
-    urlParamName: "rice",
+    name: "Salads",
+    urlParamName: "salads",
   },
   {
     id: 4,
-    name: "Fish",
-    urlParamName: "fish",
+    name: "Desserts",
+    urlParamName: "desserts",
   },
   {
     id: 5,
-    name: "Fruits",
-    urlParamName: "fruits",
+    name: "Drinks",
+    urlParamName: "Drinks",
   },
   {
     id: 6,
-    name: "Icecreams",
-    urlParamName: "icecreams",
-  },
-  {
-    id: 7,
-    name: "Soft Drinks",
-    urlParamName: "drinks",
+    name: "Snacks",
+    urlParamName: "snacks",
   },
 ];

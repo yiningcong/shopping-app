@@ -44,7 +44,7 @@ const MainHeader = (props) => {
   return (
     <header className="fixed top-0 z-50 w-screen p-3 px-4 md:p-4 md:px-16 bg-primary">
       {/* desktop & tablet */}
-      <div className="hidden md:flex w-full h-full items-center justify-between ">
+      <div className="hidden md:flex w-full h-full items-center justify-between hover:cursor-pointer">
         <Link to="/" className="flex items-center gap-2">
           <img src={Logo} className="w-12 object-cover" alt="logo" />
           <p className="text-textColor text-xl font-bold">Food</p>
@@ -55,24 +55,18 @@ const MainHeader = (props) => {
             initial={{ opacity: 0, x: 200 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: 200 }}
-            className="flex items-center gap-24 "
+            className="flex items-center gap-24 duration-100 transition-all ease-in-out font-semibold text-lg text-headingColor"
           >
-            <li className="text-lg text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer">
+            <Link to="/" className="hover:text-textColor">
               Home
-            </li>
-            <li className="text-lg text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer">
-              Menu
-            </li>
-            <li className="text-lg text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer">
-              About Us
-            </li>
-            <li className="text-lg text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer">
-              Service
-            </li>
+            </Link>
+            <li className=" hover:text-textColor">Menu</li>
+            <li className=" hover:text-textColor">About Us</li>
+            <li className=" hover:text-textColor">Service</li>
           </motion.ul>
 
           <div className="relative flex items-center justify-center">
-            <MdShoppingBasket className="text-textColor text-2xl  cursor-pointer" />
+            <MdShoppingBasket className="text-textColor text-2xl hover:cursor-pointer" />
             <div className=" absolute -top-2 -right-2 w-5 h-5 rounded-full bg-cartNumBg flex items-center justify-center">
               <p className="text-xs text-white font-semibold">1</p>
             </div>

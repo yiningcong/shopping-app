@@ -1,34 +1,31 @@
 import ProductItem from "./ProductItem";
 import classes from "./Products.module.css";
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { MdShoppingBasket } from "react-icons/md";
+import { motion } from "framer-motion";
+import NotFound from "../../img/NotFound.svg";
 
-const DUMMY_PRODUCT = [
-  {
-    id: "p1",
-    price: 6,
-    title: "My first book",
-    description: "My first book I write",
-  },
-  {
-    id: "p2",
-    price: 5,
-    title: "My second book",
-    description: "My second book I write",
-  },
-];
+// const data = {
+//   id: `${Date.now()}`,
+//   title: title,
+//   imageURL: imageAsset,
+//   category: category,
+//   qty: 1,
+//   price: price,
+// };
 
 const Products = (props) => {
   return (
     <section className={classes.products}>
       <h2>Buy your favorite products</h2>
       <ul>
-        {DUMMY_PRODUCT.map((item) => (
+        {props.foodItems.map((item) => (
           <ProductItem
             key={item.id}
             id={item.id}
             title={item.title}
             price={item.price}
-            description={item.description}
+            imageURL={item.imageURL}
           />
         ))}
       </ul>

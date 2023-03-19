@@ -1,12 +1,10 @@
-import { Fragment } from "react";
+import { Fragment, useEffect } from "react";
 
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import MainContainer from "./components/Layout/MainContainer";
 import MainHeader from "./components/Layout/MainHeader";
 import AddFood from "./components/AddFood/AddFood";
-
-let isInitial = true;
 
 function App() {
   return (

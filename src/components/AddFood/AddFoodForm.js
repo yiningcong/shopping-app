@@ -6,7 +6,6 @@ import {
   MdFoodBank,
 } from "react-icons/md";
 import React, { useState } from "react";
-import { motion } from "framer-motion";
 import Loader from "../UI/Loader";
 import {
   deleteObject,
@@ -15,8 +14,9 @@ import {
   uploadBytesResumable,
 } from "firebase/storage";
 import { storage } from "../../firebase.config";
-import { categories } from "./dataInfo";
+import { categories } from "./DataInfo";
 import { saveItem } from "../../store/item-actions";
+import Notification from "../UI/Notification";
 
 const AddFoodForm = () => {
   const [title, setTitle] = useState("");
@@ -26,6 +26,30 @@ const AddFoodForm = () => {
 
   const [isLoading, setIsLoading] = useState(false);
   const [status, setStatus] = useState("");
+
+  const errorHandler = (message) => {
+    setIsLoading(false);
+    setStatus(message);
+    setTimeout(() => {
+      setStatus("");
+    }, 4000);
+  };
+
+  const successHandler = (message) => {
+    setIsLoading(false);
+    setStatus(message);
+    setTimeout(() => {
+      setStatus("");
+    }, 4000);
+  };
+
+  const emptyHandler = (message) => {
+    setIsLoading(false);
+    setStatus("empty");
+    setTimeout(() => {
+      setStatus("");
+    }, 4000);
+  };
 
   const uploadImage = (e) => {
     setIsLoading(true);
@@ -41,20 +65,12 @@ const AddFoodForm = () => {
       },
       (error) => {
         console.log(error);
-        setStatus("error");
-        setIsLoading(false);
-        setTimeout(() => {
-          setStatus("");
-        }, 4000);
+        errorHandler(error);
       },
       () => {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
           setImageAsset(downloadURL);
-          setIsLoading(false);
-          setStatus("success");
-          setTimeout(() => {
-            setStatus("");
-          }, 4000);
+          successHandler("success");
         });
       }
     );
@@ -65,11 +81,7 @@ const AddFoodForm = () => {
     const deleteRef = ref(storage, imageAsset);
     deleteObject(deleteRef).then(() => {
       setImageAsset(null);
-      setIsLoading(false);
-      setStatus("success");
-      setTimeout(() => {
-        setStatus("");
-      }, 4000);
+      successHandler("success");
     });
   };
 
@@ -77,11 +89,7 @@ const AddFoodForm = () => {
     setIsLoading(true);
     try {
       if (!title || !imageAsset || !price || !category) {
-        setStatus("empty");
-        setTimeout(() => {
-          setStatus("");
-          setIsLoading(false);
-        }, 4000);
+        emptyHandler("empty");
       } else {
         const data = {
           id: `${Date.now()}`,
@@ -92,47 +100,18 @@ const AddFoodForm = () => {
           price: price,
         };
         saveItem(data);
-        setIsLoading(false);
-        setStatus("success");
-        setTimeout(() => {
-          setStatus("");
-        }, 4000);
+        successHandler("success");
       }
     } catch (error) {
       console.log(error);
-      setStatus("error");
-      setIsLoading(false);
-      setTimeout(() => {
-        setStatus("");
-      }, 4000);
+      errorHandler(error);
     }
   };
 
   return (
     <div className="w-full min-h-screen flex items-center justify-center">
       <div className="w-[90%] bg-white bg-transparent md:w-[50%] border-2 border-secondHeadingColor rounded-lg p-8 flex flex-col items-center justify-center gap-8">
-        {status !== "success" && status !== "" && (
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="w-full p-2 rounded-lg text-center text-lg font-semibold bg-orange-500 text-white"
-          >
-            {"Error while uploading : Try AGain 🙇"}
-          </motion.p>
-        )}
-
-        {status == "success" && (
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="w-full p-2 rounded-lg text-center text-lg font-semibold bg-successMsg text-white"
-          >
-            Data edited successfully 😊
-          </motion.p>
-        )}
-
+        <Notification status={status} />
         <div className="w-full py-2 border-b-2 border-secondHeadingColor flex items-center gap-2">
           <MdFastfood className="text-xl text-textColor" />
           <input
@@ -220,15 +199,15 @@ const AddFoodForm = () => {
               value={price}
               onChange={(e) => setPrice(e.target.value)}
               placeholder="Price"
-              className="w-full h-full text-lg bg-transparent outline-none border-none placeholder:text-secondHeadingColor text-textColor"
+              className="w-full h-full text-lg bg-transparent outline-none placeholder:text-secondHeadingColor text-textColor"
             />
           </div>
         </div>
 
-        <div className="flex items-center w-full">
+        <div className="flex items-center w-full cursor-pointer">
           <button
             type="button"
-            className="ml-0 md:ml-auto w-full md:w-auto border-none outline-none bg-textColor px-12 py-2 rounded-lg text-lg text-white font-bold"
+            className="hover:shadow-lg ml-0 md:ml-auto w-full md:w-auto bg-textColor px-12 py-2 rounded-lg text-lg text-white font-bold"
             onClick={saveDetails}
           >
             Save

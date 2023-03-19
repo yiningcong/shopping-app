@@ -72,12 +72,12 @@ const HomeContainer = () => {
                 velit eaque fugit distinctio est nam voluptatum architecto.
               </p>
 
-              <button
+              {/* <button
                 type="button"
                 className="bg-gradient-to-br from-orange-400 to-orange-500 w-full md:w-auto px-4 py-2  rounded-lg hover:shadow-lg transition-all ease-in-out duration-100"
               >
                 Order Now
-              </button>
+              </button> */}
             </div>
           </div>
           <div className="w-full md:w-1/2">
@@ -99,7 +99,7 @@ const HomeContainer = () => {
             heroData.map((n) => (
               <div
                 key={n.id}
-                className="flex flex-col items-start col-span-12 space-y-3 sm:col-span-6 xl:col-span-4"
+                className="flex flex-col items-start col-span-12 space-y-3 sm:col-span-6 md:col-span-4 xl:col-span-3"
               >
                 <img
                   src={n.imageSrc}
