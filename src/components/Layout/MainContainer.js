@@ -11,8 +11,6 @@ import { getAllFoodItems } from "../../store/item-actions";
 let isInitial = true;
 
 const MainContainer = () => {
-  let foodItems = [];
-
   const toggleCart = useSelector((state) => state.showCart.cartIsShown);
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
@@ -21,15 +19,7 @@ const MainContainer = () => {
     (state) => state.showCart.showNotification
   );
 
-  const fetchData = async () => {
-    await getAllFoodItems().then((data) => {
-      foodItems.push(data);
-      console.log(foodItems);
-    });
-  };
-
   useEffect(() => {
-    fetchData();
     dispatch(fetchCartData());
   }, [dispatch]);
 
@@ -55,7 +45,7 @@ const MainContainer = () => {
         />
       )}
       <HomeContainer />
-      {foodItems && <MenuContainer foodItems={foodItems} />}
+      <MenuContainer />
       <AnimatePresence mode="wait">{toggleCart && <Cart />}</AnimatePresence>
     </Fragment>
   );

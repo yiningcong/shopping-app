@@ -9,28 +9,28 @@ import Fi1 from "../../img/fi1.png";
 const HomeContainer = () => {
   const heroData = [
     {
-      id: 1,
+      id: 111,
       name: "Icecream",
       decp: "Chocolate & vanilla",
       price: "5.25",
       imageSrc: I1,
     },
     {
-      id: 2,
+      id: 222,
       name: "Strawberries",
       decp: "Fresh Strawberries",
       price: "10.25",
       imageSrc: F1,
     },
     {
-      id: 3,
+      id: 333,
       name: "Chicken Kebab",
       decp: "Mixed Kebab Plate",
       price: "8.25",
       imageSrc: C3,
     },
     {
-      id: 4,
+      id: 444,
       name: "Fish Kebab",
       decp: "Mixed Fish Kebab",
       price: "5.25",

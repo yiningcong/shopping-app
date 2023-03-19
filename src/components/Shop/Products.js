@@ -1,34 +1,29 @@
-import ProductItem from "./ProductItem";
-import classes from "./Products.module.css";
 import React, { useEffect, useRef, useState } from "react";
-import { MdShoppingBasket } from "react-icons/md";
-import { motion } from "framer-motion";
+
 import NotFound from "../../img/NotFound.svg";
+import ProductItem from "./ProductItem";
 
-// const data = {
-//   id: `${Date.now()}`,
-//   title: title,
-//   imageURL: imageAsset,
-//   category: category,
-//   qty: 1,
-//   price: price,
-// };
-
-const Products = (props) => {
+const Products = ({ foodItems }) => {
   return (
-    <section className={classes.products}>
-      <h2>Buy your favorite products</h2>
-      <ul>
-        {props.foodItems.map((item) => (
+    <section className="w-full flex items-center gap-3 my-12 scroll-smooth overflow-x-hidden flex-wrap justify-center">
+      {foodItems ? (
+        foodItems.map((item) => (
           <ProductItem
             key={item.id}
             id={item.id}
             title={item.title}
             price={item.price}
-            imageURL={item.imageURL}
+            imgURL={item.imgURL}
           />
-        ))}
-      </ul>
+        ))
+      ) : (
+        <div className="w-full flex flex-col items-center justify-center">
+          <img src={NotFound} className="h-340" />
+          <p className="text-xl text-headingColor font-semibold my-2">
+            Items Not Available
+          </p>
+        </div>
+      )}
     </section>
   );
 };

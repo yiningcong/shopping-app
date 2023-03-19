@@ -5,7 +5,7 @@ export const fetchCartData = () => {
   return async (dispatch) => {
     const fetchItem = async () => {
       const response = await fetch(
-        "https://react-demo-d2af2-default-rtdb.firebaseio.com/cart.json"
+        "https://food-order-app-a1d9e-default-rtdb.firebaseio.com/cart.json"
       );
 
       if (!response.ok) {
@@ -36,6 +36,7 @@ export const fetchCartData = () => {
   };
 };
 
+//id price title
 export const sendCartData = (cartStaff) => {
   return async (dispatch) => {
     dispatch(
@@ -48,7 +49,7 @@ export const sendCartData = (cartStaff) => {
 
     const sendItem = async () => {
       const response = await fetch(
-        "https://react-demo-d2af2-default-rtdb.firebaseio.com/cart.json",
+        "https://food-order-app-a1d9e-default-rtdb.firebaseio.com/cart.json",
         {
           method: "PUT",
           Headers: { "Content-Type": "application/json" },
