@@ -97,7 +97,7 @@ const AddFoodForm = () => {
           imageURL: imageAsset,
           category: category,
           qty: 1,
-          price: price,
+          price: +price,
         };
         saveItem(data);
         successHandler("success");

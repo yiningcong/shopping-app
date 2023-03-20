@@ -13,7 +13,7 @@ const Products = ({ foodItems }) => {
             id={item.id}
             title={item.title}
             price={item.price}
-            imgURL={item.imgURL}
+            imageURL={item.imageURL}
           />
         ))
       ) : (

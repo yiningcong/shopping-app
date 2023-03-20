@@ -4,17 +4,17 @@ import { motion } from "framer-motion";
 const Notification = (props) => {
   const message = {
     error: "Error while uploading : Try AGain 🙇",
-    success: "Data edited successfully 😊",
+    success: "Item edited successfully 😊",
     empty: "Please provide all information required 🙇",
   };
 
   return (
-    <section>
+    <section className="fixed z-50 bottom-2 right-2">
       {props.status !== "success" && props.status !== "" && (
         <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
+          initial={{ opacity: 0, y: -200, scale: 0 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -200 }}
           className="w-full p-2 rounded-lg text-center text-lg font-semibold bg-orange-500 text-white"
         >
           {message[props.status]}
@@ -23,9 +23,10 @@ const Notification = (props) => {
 
       {props.status == "success" && (
         <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
+          positionTransition
+          initial={{ opacity: 0, y: 50, scale: 0.3 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.5, transition: { duration: 0.2 } }}
           className="w-full p-2 rounded-lg text-center text-lg font-semibold bg-successMsg text-white"
         >
           {message[props.status]}
