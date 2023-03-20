@@ -35,9 +35,9 @@ const Cart = (props) => {
       {/* information about cart */}
 
       {cartItems && cartItems.length > 0 ? (
-        <div className="w-full h-full bg-cartBg rounded-t-[2rem] flex flex-col">
+        <div className="w-full h-full bg-cartBg rounded-t-[2rem] flex flex-col overflow-y-scroll">
           {/* cart Items section */}
-          <div className="w-full h-340 md:h-42 px-6 py-10 flex flex-col gap-3 overflow-y-scroll scrollbar-none">
+          <div className="w-full h-500 md:h-42 px-6 py-10 flex flex-col gap-3 overflow-y-scroll scrollbar-none">
             {/* cart Item */}
             <ul>
               {cartItems.map((item) => (
