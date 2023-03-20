@@ -66,11 +66,7 @@ const MainHeader = (props) => {
           </motion.ul>
 
           <div className="relative flex items-center justify-center">
-            <MdShoppingBasket className="text-textColor text-2xl hover:cursor-pointer" />
-            <div className=" absolute -top-2 -right-2 w-5 h-5 rounded-full bg-cartNumBg flex items-center justify-center">
-              <p className="text-xs text-white font-semibold">1</p>
-            </div>
-            <CartButton />
+            <CartButton className="text-textColor text-2xl hover:cursor-pointer" />
           </div>
 
           <div className="relative">
